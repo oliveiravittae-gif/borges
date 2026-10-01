@@ -3,4 +3,4 @@
 - [x] Add semantic design system and responsive interactions
 - [x] Add SEO metadata and structured data
 - [x] Validate desktop and mobile conversion flows
-- [ ] Adequar a proporção e o tamanho da logomarca enviada antes da substituição
+- [x] Adequar a proporção e o tamanho da logomarca enviada antes da substituição

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, Factory, Menu, MessageCircle, Ruler, ShieldCheck, X } from "lucide-react";
-import mark from "@/assets/borges-mark.png";
+import logoAsset from "@/assets/logo-borges-esquadrias.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { categories, company, faq, featured, imagery, navigation } from "@/data/site";
 import { openWhatsApp, trackEvent } from "@/lib/whatsapp";
@@ -14,7 +14,7 @@ const gallery = [
 ];
 
 function Logo({ light = false }: { light?: boolean }) {
-  return <a href="#inicio" className="brand" aria-label="Borges Esquadrias Metálicas — início"><img src={mark} width={44} height={44} alt="" /><span className={light ? "text-surface-light" : "text-navy"}><strong>BORGES</strong><small>ESQUADRIAS METÁLICAS</small></span></a>;
+  return <a href="#inicio" className={`brand ${light ? "brand-on-dark" : "brand-on-light"}`} aria-label="Borges Esquadrias Metálicas — início"><img src={logoAsset.url} width={300} height={62} alt="Borges Esquadrias Metálicas" /></a>;
 }
 
 export function LandingPage() {
