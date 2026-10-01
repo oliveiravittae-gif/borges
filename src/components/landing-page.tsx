@@ -39,7 +39,11 @@ export function LandingPage() {
     return () => window.removeEventListener("keydown", key);
   }, [lightbox]);
 
-  const whatsapp = (source: string, category?: string, product?: string) => openWhatsApp({ source, category, product });
+  const whatsapp = (source: string, category?: string, product?: string) => openWhatsApp({
+    source,
+    ...(category ? { category } : {}),
+    ...(product ? { product } : {}),
+  });
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -156,7 +160,7 @@ export function LandingPage() {
       <div className="mobile-sticky sm:hidden"><Button className="w-full" onClick={() => whatsapp("mobile_sticky")}>Solicitar orçamento <MessageCircle size={18} /></Button></div>
       {notice && <div className="contact-notice" role="status"><strong>Canal em validação</strong><span>O número oficial do WhatsApp ainda precisa ser informado.</span></div>}
 
-      {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada"><Button variant="light" size="icon" className="lightbox-close" aria-label="Fechar imagem" onClick={() => setLightbox(null)}><X /></Button><Button variant="light" size="icon" className="lightbox-prev" aria-label="Imagem anterior" onClick={() => setLightbox((lightbox - 1 + gallery.length) % gallery.length)}><ArrowLeft /></Button><img src={gallery[lightbox].src} alt={gallery[lightbox].alt} /><Button variant="light" size="icon" className="lightbox-next" aria-label="Próxima imagem" onClick={() => setLightbox((lightbox + 1) % gallery.length)}><ArrowRight /></Button></div>}
+      {lightbox !== null && gallery[lightbox] ? <div className="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada"><Button variant="light" size="icon" className="lightbox-close" aria-label="Fechar imagem" onClick={() => setLightbox(null)}><X /></Button><Button variant="light" size="icon" className="lightbox-prev" aria-label="Imagem anterior" onClick={() => setLightbox((lightbox - 1 + gallery.length) % gallery.length)}><ArrowLeft /></Button><img src={gallery[lightbox].src} alt={gallery[lightbox].alt} /><Button variant="light" size="icon" className="lightbox-next" aria-label="Próxima imagem" onClick={() => setLightbox((lightbox + 1) % gallery.length)}><ArrowRight /></Button></div> : null}
     </div>
   );
 }
