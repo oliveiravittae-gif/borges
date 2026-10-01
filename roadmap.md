@@ -5,3 +5,4 @@
 - [x] Validate desktop and mobile conversion flows
 - [x] Adequar a proporção e o tamanho da logomarca enviada antes da substituição
 - [x] Remover somente o fundo branco da logomarca, preservando todos os elementos
+- [x] Adicionar dados oficiais da empresa e mapa de localização
