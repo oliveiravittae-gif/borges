@@ -11,10 +11,25 @@ export const company = {
   foundedYear: 1978,
   city: "Belford Roxo",
   state: "RJ",
-  whatsapp: "",
-  phone: "",
-  email: "",
-  address: "",
+  whatsapp: "5521989017366",
+  commercialPhone: "(21) 98901-7366",
+  financePhone: "(21) 98751-4946",
+  phones: ["(21) 2761-2633", "(21) 2761-4876"],
+  email: "contato@borgesesquadrias.com.br",
+  address: {
+    street: "Rua Amaraú, 39, galpão",
+    neighborhood: "Santa Amélia",
+    postalCode: "26115-190",
+    city: "Belford Roxo",
+    state: "RJ",
+    country: "BR",
+    formatted: "Rua Amaraú, 39, galpão — Santa Amélia — Belford Roxo/RJ — CEP 26115-190",
+  },
+  businessHours: [
+    { days: "Segunda à quinta", hours: "7h30 às 17h" },
+    { days: "Sexta-feira", hours: "7h30 às 16h" },
+    { days: "Sábado e domingo", hours: "Fechado" },
+  ],
 } as const;
 
 export const imagery = { hero, factory, detail, door, window: windowImage, gate };

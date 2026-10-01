@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
-          { "@type": ["Organization", "LocalBusiness"], name: company.fullName, foundingDate: String(company.foundedYear), address: { "@type": "PostalAddress", addressLocality: company.city, addressRegion: company.state, addressCountry: "BR" } },
+          { "@type": ["Organization", "LocalBusiness"], name: company.fullName, foundingDate: String(company.foundedYear), telephone: company.commercialPhone, email: company.email, address: { "@type": "PostalAddress", streetAddress: company.address.street, addressLocality: company.address.city, addressRegion: company.address.state, postalCode: company.address.postalCode, addressCountry: company.address.country }, openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "07:30", closes: "17:00" }, { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "07:30", closes: "16:00" }] },
           { "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) },
         ],
       }),

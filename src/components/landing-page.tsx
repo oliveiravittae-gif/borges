@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, Factory, Menu, MessageCircle, Ruler, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Clock, Factory, Mail, MapPin, Menu, MessageCircle, Phone, Ruler, ShieldCheck, X } from "lucide-react";
 import logo from "@/assets/logo-borges-transparent.png";
 import { Button } from "@/components/ui/button";
 import { categories, company, faq, featured, imagery, navigation } from "@/data/site";
@@ -20,13 +20,6 @@ function Logo({ light = false }: { light?: boolean }) {
 export function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const [notice, setNotice] = useState(false);
-
-  useEffect(() => {
-    const pending = () => { setNotice(true); window.setTimeout(() => setNotice(false), 5000); };
-    window.addEventListener("borges:contact-pending", pending);
-    return () => window.removeEventListener("borges:contact-pending", pending);
-  }, []);
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -151,15 +144,27 @@ export function LandingPage() {
 
         <section id="duvidas" className="section-space bg-background scroll-mt-20"><div className="site-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20"><div><p className="eyebrow text-primary">Dúvidas frequentes</p><h2 className="section-title mt-4">Informação direta para decidir o próximo passo.</h2></div><div className="faq-list">{faq.map((item) => <details key={item.q} onToggle={(e) => { if (e.currentTarget.open) trackEvent("faq_open", { question: item.q }); }}><summary>{item.q}<ChevronDown aria-hidden="true" /></summary><p>{item.a}</p></details>)}</div></div></section>
 
-        <section id="contato" className="contact-section scroll-mt-20"><div className="site-container grid gap-12 lg:grid-cols-2"><div><p className="eyebrow text-accent">Contato</p><h2 className="section-title mt-4">Fale sobre o produto que você procura.</h2><p className="body-copy mt-6 text-dark-muted">A Borges está em {company.city}, {company.state}. Os canais oficiais de telefone, WhatsApp, e-mail e endereço completo aguardam validação antes da publicação.</p></div><div className="contact-panel"><p className="contact-label">Atendimento comercial</p><h3>Conte qual esquadria você precisa.</h3><p>Quando o número oficial for informado, todos os botões desta página abrirão a conversa com o contexto correto.</p><Button className="mt-7" onClick={() => whatsapp("contact")}>Abrir WhatsApp <MessageCircle size={18} /></Button></div></div></section>
+        <section id="contato" className="contact-section scroll-mt-20">
+          <div className="site-container">
+            <div className="contact-heading"><div><p className="eyebrow text-accent">Contato e localização</p><h2 className="section-title mt-4">Fale sobre o produto que você procura.</h2></div><p className="body-copy text-dark-muted">Atendimento direto em Belford Roxo para tirar dúvidas e solicitar seu orçamento.</p></div>
+            <div className="contact-layout mt-12">
+              <div className="contact-details">
+                <div className="contact-detail"><MapPin aria-hidden="true" /><div><strong>Endereço</strong><address>{company.address.formatted}</address><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.address.formatted)}`} target="_blank" rel="noreferrer">Abrir no Google Maps <ArrowRight size={15} /></a></div></div>
+                <div className="contact-detail"><Phone aria-hidden="true" /><div><strong>Telefones</strong>{company.phones.map((phone) => <a key={phone} href={`tel:+55${phone.replace(/\D/g, "")}`}>{phone}</a>)}<a href={`tel:+55${company.commercialPhone.replace(/\D/g, "")}`}>Comercial: {company.commercialPhone}</a><a href={`tel:+55${company.financePhone.replace(/\D/g, "")}`}>Financeiro: {company.financePhone}</a></div></div>
+                <div className="contact-detail"><Mail aria-hidden="true" /><div><strong>E-mail</strong><a href={`mailto:${company.email}`}>{company.email}</a></div></div>
+                <div className="contact-detail"><Clock aria-hidden="true" /><div><strong>Horário comercial</strong>{company.businessHours.map((item) => <p key={item.days}><span>{item.days}</span>{item.hours}</p>)}</div></div>
+                <Button className="mt-2 w-full sm:w-auto" onClick={() => whatsapp("contact")}>Solicitar orçamento pelo WhatsApp <MessageCircle size={18} /></Button>
+              </div>
+              <div className="location-map"><iframe title="Localização da Borges Esquadrias Metálicas" src={`https://www.google.com/maps?q=${encodeURIComponent(company.address.formatted)}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <footer className="footer"><div className="site-container"><div className="footer-grid"><div><Logo light /><p className="mt-6 max-w-xs text-sm leading-relaxed text-dark-muted">Fabricação de portas, janelas, portões e outras esquadrias metálicas desde 1978.</p></div><div><h3>Produtos</h3><a href="#produtos">Portas</a><a href="#produtos">Janelas</a><a href="#produtos">Portões</a><a href="#produtos">Outras esquadrias</a></div><div><h3>Navegação</h3><a href="#historia">A Borges</a><a href="#galeria">Galeria</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></div><div><h3>Localização</h3><p>{company.city} • {company.state}</p><p>Demais dados em validação.</p></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Borges Esquadrias Metálicas.</span><span>Tradição em metal desde 1978.</span></div></div></footer>
+      <footer className="footer"><div className="site-container"><div className="footer-grid"><div><Logo light /><p className="mt-6 max-w-xs text-sm leading-relaxed text-dark-muted">Fabricação de portas, janelas, portões e outras esquadrias metálicas desde 1978.</p></div><div><h3>Produtos</h3><a href="#produtos">Portas</a><a href="#produtos">Janelas</a><a href="#produtos">Portões</a><a href="#produtos">Outras esquadrias</a></div><div><h3>Navegação</h3><a href="#historia">A Borges</a><a href="#galeria">Galeria</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></div><div><h3>Contato</h3><p>{company.address.street}</p><p>{company.address.neighborhood} • {company.city}/{company.state}</p><a href={`tel:+55${company.commercialPhone.replace(/\D/g, "")}`}>{company.commercialPhone}</a><a href={`mailto:${company.email}`}>{company.email}</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Borges Esquadrias Metálicas.</span><span>Tradição em metal desde 1978.</span></div></div></footer>
 
       <Button size="icon" className="floating-whatsapp hidden sm:inline-flex" aria-label="Fale com a Borges" title="Fale com a Borges" onClick={() => whatsapp("floating")}><MessageCircle /></Button>
       <div className="mobile-sticky sm:hidden"><Button className="w-full" onClick={() => whatsapp("mobile_sticky")}>Solicitar orçamento <MessageCircle size={18} /></Button></div>
-      {notice && <div className="contact-notice" role="status"><strong>Canal em validação</strong><span>O número oficial do WhatsApp ainda precisa ser informado.</span></div>}
-
       {lightbox !== null && gallery[lightbox] ? <div className="lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada"><Button variant="light" size="icon" className="lightbox-close" aria-label="Fechar imagem" onClick={() => setLightbox(null)}><X /></Button><Button variant="light" size="icon" className="lightbox-prev" aria-label="Imagem anterior" onClick={() => setLightbox((lightbox - 1 + gallery.length) % gallery.length)}><ArrowLeft /></Button><img src={gallery[lightbox].src} alt={gallery[lightbox].alt} /><Button variant="light" size="icon" className="lightbox-next" aria-label="Próxima imagem" onClick={() => setLightbox((lightbox + 1) % gallery.length)}><ArrowRight /></Button></div> : null}
     </div>
   );
