@@ -22,3 +22,27 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## GitHub Pages
+
+The site is published at https://oliveiravittae-gif.github.io/borges/.
+Every push to `main` runs `.github/workflows/deploy.yml`; it can also be
+started manually from Actions. Settings → Pages → Source must be **GitHub Actions**.
+
+To reproduce the Pages build with Node.js 24:
+
+```sh
+npm ci
+npm run build:pages
+```
+
+The Pages script enables `/borges/` and TanStack Start prerendering, verifies
+the generated HTML and local asset paths, and publishes only `dist`.
+The temporary SSR build in `dist-ssr` is never uploaded. This target supports
+static pages; future server functions or dynamic server routes require hosting
+with a server runtime.
+
+The ordinary `npm run build` and `npm run dev` retain the Lovable configuration.
+Keep `package-lock.json` synchronized with `package.json` when dependencies
+change (`npm install --package-lock-only`); the existing Bun lockfile and Lovable
+integration are preserved.

@@ -5,11 +5,34 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import type { ConfigEnv } from "vite";
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-  },
-});
+export default (env: ConfigEnv) => {
+  const isPages = process.env["GITHUB_PAGES"] === "true";
+
+  return defineConfig({
+    // Keep Lovable's normal build; GitHub Pages only serves static files.
+    ...(isPages
+      ? {
+          nitro: false,
+          vite: {
+            base: "/borges/",
+            environments: {
+              client: { build: { outDir: "dist" } },
+              ssr: { build: { outDir: "dist-ssr" } },
+            },
+          },
+        }
+      : {}),
+    tanstackStart: {
+      // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
+      // nitro/vite builds from this
+      server: { entry: "server" },
+      ...(isPages
+        ? {
+            prerender: { enabled: true, failOnError: true, crawlLinks: false },
+          }
+        : {}),
+    },
+  })(env);
+};

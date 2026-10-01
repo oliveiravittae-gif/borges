@@ -10,10 +10,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Borges Esquadrias Metálicas — Desde 1978" },
       { property: "og:description", content: "Portas, janelas, portões e outras esquadrias metálicas com atendimento direto em Belford Roxo, RJ." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: import.meta.env.BASE_URL },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: import.meta.env.BASE_URL }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
