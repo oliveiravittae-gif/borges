@@ -42,7 +42,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-header { position: absolute; z-index: 40; width: 100%; border-bottom: 1px solid color-mix(in oklab, var(--surface-light) 18%, transparent); background: color-mix(in oklab, var(--navy) 45%, transparent); backdrop-filter: blur(10px); }
 .brand { display: inline-flex; align-items: center; flex: 0 0 auto; text-decoration: none; }
 .brand img { display: block; width: clamp(168px, 19vw, 218px); height: auto; aspect-ratio: 150 / 31; object-fit: contain; }
-.brand-on-dark { padding: .32rem .45rem; background: color-mix(in oklab, var(--surface-light) 94%, transparent); }
+.brand-on-dark { padding: .32rem .45rem; }
 .chat-top .brand img { width: 168px; }
 .nav-link { color: var(--hero-muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; text-decoration: none; transition: color .25s; }
 .nav-link:hover { color: var(--surface-light); }
