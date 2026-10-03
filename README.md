@@ -1,6 +1,23 @@
 # Borges 
 
-Implement exactly the screenshot and nothing else
+Landing page B2B para lojistas, revendedores, construtoras e compradores em volume.
+
+## Posicionamento comercial
+
+Copy e categorias ficam em `src/data/site.ts`. Mensagens de WhatsApp passam por
+`src/lib/whatsapp.ts`, com contexto de revenda, obra, categoria ou recorrência e
+preservação dos parâmetros de campanha. O site não envia mensagens automaticamente.
+
+Reposição, composição do pedido e próximas etapas são convites para consulta,
+sem promessa de descontos, estoque, capacidade, prazo ou cobertura de entrega.
+As fotografias são ilustrativas; modelos e especificações exigem confirmação
+com o comercial. Não há integração com Supabase.
+
+Validação da reformulação: builds Lovable e Pages, TypeScript, lint dos arquivos
+alterados, âncoras do HTML e mensagens comerciais com simulação local de abertura
+do WhatsApp. Prévia conferida em desktop e em larguras de 390 e 320 pixels,
+incluindo menu móvel, Escape, retorno do foco e ausência de rolagem horizontal.
+Essas verificações não confirmam atendimento humano nem condições de fornecimento.
 
 This project was built with [Lovable](https://lovable.dev).
 

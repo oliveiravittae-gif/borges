@@ -35,33 +35,122 @@ export const company = {
 export const imagery = { hero, factory, detail, door, window: windowImage, gate };
 
 export const navigation = [
+  { label: "Atacado", href: "#atacado" },
   { label: "Produtos", href: "#produtos" },
   { label: "A Borges", href: "#historia" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Galeria", href: "#galeria" },
   { label: "Dúvidas", href: "#duvidas" },
   { label: "Contato", href: "#contato" },
 ] as const;
 
-export const categories = [
-  { id: "portas", name: "Portas", image: door, description: "Portas metálicas para diferentes estilos e necessidades de projeto." },
-  { id: "janelas", name: "Janelas", image: windowImage, description: "Esquadrias que combinam abertura, proteção e integração com o ambiente." },
-  { id: "portoes", name: "Portões", image: gate, description: "Portões metálicos para compor acessos residenciais e outros projetos." },
-  { id: "basculantes", name: "Basculantes e vitrôs", image: detail, description: "Opções de esquadrias para ventilação, iluminação e aproveitamento de espaços." },
+export const copy = {
+  eyebrow: "Fabricante desde 1978 · Vendas no atacado",
+  headline: "Metal que faz parte do seu próximo negócio.",
+  intro:
+    "Portas, janelas, portões e outras esquadrias metálicas para lojistas, revendedores, construtoras e quem compra em volume. Converse com a Borges sobre o pedido de hoje e as necessidades que vêm depois.",
+  heroCta: "Consultar condições de atacado",
+  productTitle: "Uma linha para compor o seu pedido.",
+  productIntro:
+    "Reúna as categorias, medidas e quantidades que sua loja ou obra precisa. Uma consulta completa ajuda a avaliar o conjunto da compra.",
+  imageNote: "Imagens ilustrativas. Modelos e especificações sob consulta.",
+  recurringTitle: "Pense além do pedido de hoje.",
+  recurringIntro:
+    "O próximo giro da loja. A próxima etapa da obra. Compartilhe também sua previsão de reposição ou de novas compras para conversar sobre fornecimento recorrente.",
+  recurringCta: "Conversar sobre próximas compras",
+  history:
+    "Desde 1978, a Borges trabalha com esquadrias metálicas em Belford Roxo, RJ. Uma trajetória em metal que hoje se conecta a quem compra para revender e construir.",
+  finalTitle: "Sua próxima compra começa com uma boa conversa.",
+  finalIntro:
+    "Traga sua lista de produtos, quantidades e destino do pedido. Se já houver uma previsão para reposição ou outras etapas, inclua também: vale olhar para o conjunto.",
+} as const;
+
+export const audiences = [
+  {
+    id: "lojista",
+    label: "Lojistas e revendedores",
+    title: "O próximo giro da sua loja começa na escolha do mix.",
+    description:
+      "Consulte as linhas para revenda e reúna, no mesmo pedido, os itens que fazem sentido para o seu público. Informe também o que costuma repor.",
+    cta: "Consultar condições para revenda",
+  },
+  {
+    id: "construtora",
+    label: "Construtoras e obras",
+    title: "Olhe para a obra inteira. Planeje cada etapa.",
+    description:
+      "Compartilhe os tipos de esquadrias, medidas e quantidades do projeto. Se a compra acontecer em etapas, leve essa previsão para a conversa.",
+    cta: "Consultar fornecimento para obra",
+  },
+  {
+    id: "volume",
+    label: "Compradores em volume",
+    title: "Uma visão do conjunto para uma compra bem definida.",
+    description:
+      "Organize sua demanda por categoria e quantidade. Consulte o pedido completo e converse sobre futuras necessidades, conforme o seu planejamento.",
+    cta: "Solicitar orçamento em volume",
+  },
 ] as const;
 
-export const featured = [
-  { id: "porta-metalica", category: "Portas", name: "Porta metálica", image: door, description: "Consulte modelos e possibilidades para o seu projeto." },
-  { id: "janela-metalica", category: "Janelas", name: "Janela metálica", image: windowImage, description: "Informe as medidas e o contexto da obra para iniciar o atendimento." },
-  { id: "portao-metalico", category: "Portões", name: "Portão metálico", image: gate, description: "Apresente sua necessidade e consulte as opções disponíveis." },
+export const categories = [
+  {
+    id: "portas",
+    name: "Portas",
+    image: door,
+    description: "Uma categoria para compor o mix de revenda ou a relação de esquadrias da obra.",
+  },
+  {
+    id: "janelas",
+    name: "Janelas",
+    image: windowImage,
+    description: "Reúna medidas e quantidades por ambiente ou por necessidade de reposição.",
+  },
+  {
+    id: "portoes",
+    name: "Portões",
+    image: gate,
+    description: "Informe os tipos de acesso e a demanda do pedido para consultar as opções.",
+  },
+  {
+    id: "basculantes",
+    name: "Basculantes e vitrôs",
+    image: detail,
+    description: "Complete sua consulta com as demais esquadrias previstas para loja ou obra.",
+  },
+] as const;
+
+export const planning = [
+  ["01", "Identifique sua compra", "Revenda, obra ou outra demanda em volume."],
+  ["02", "Reúna o conjunto", "Categorias, medidas e quantidades estimadas."],
+  ["03", "Inclua as próximas etapas", "Reposição ou novas compras, se já previstas."],
+  ["04", "Consulte o comercial", "Confirme modelos, condições e atendimento ao destino."],
 ] as const;
 
 export const faq = [
-  { q: "Quais tipos de esquadrias a Borges fabrica?", a: "A Borges atua com portas, janelas, portões, basculantes, vitrôs e outras esquadrias metálicas." },
-  { q: "A Borges trabalha com portas metálicas?", a: "Sim. Para consultar modelos, informe à equipe o tipo de porta e o contexto do seu projeto." },
-  { q: "Existem diferentes modelos de janelas?", a: "A estrutura de produtos contempla diferentes modelos. A disponibilidade e as especificações devem ser confirmadas no atendimento." },
-  { q: "A Borges fabrica portões?", a: "Sim. Você pode iniciar uma conversa informando o tipo de portão que procura e as medidas aproximadas, caso já as tenha." },
-  { q: "Como solicitar informações sobre um modelo?", a: "Selecione uma categoria ou produto nesta página para iniciar uma conversa já identificada com o seu interesse." },
-  { q: "Como pedir um orçamento?", a: "Use um dos botões de solicitação de orçamento e informe o produto, as medidas aproximadas e o contexto do projeto." },
-  { q: "Como falar com a Borges pelo WhatsApp?", a: "Use os botões de atendimento desta página. O número oficial será disponibilizado aqui após a validação dos dados de contato." },
+  {
+    q: "Para quem a Borges vende?",
+    a: "O foco é a venda no atacado para lojistas, revendedores, construtoras e compradores em volume.",
+  },
+  {
+    q: "Quais produtos posso incluir na consulta?",
+    a: "Portas, janelas, portões, basculantes, vitrôs e outras esquadrias metálicas. Informe categorias, medidas e quantidades para confirmar modelos e especificações com a equipe.",
+  },
+  {
+    q: "Existe quantidade mínima ou condição por volume?",
+    a: "Consulte o comercial com a composição do seu pedido. Quantidades mínimas, preços e condições de pagamento precisam ser confirmados no atendimento.",
+  },
+  {
+    q: "Posso conversar sobre reposição e compras recorrentes?",
+    a: "Sim. Informe os itens que costuma comprar e sua previsão de reposição, ou as etapas da obra. A equipe avaliará a possibilidade de fornecimento e as condições para sua demanda.",
+  },
+  {
+    q: "Como confirmar disponibilidade, prazo e entrega?",
+    a: "Informe os produtos, quantidades e cidade de destino. Disponibilidade, prazos e condições de entrega devem ser confirmados com o comercial antes de fechar o pedido.",
+  },
+  {
+    q: "As imagens mostram produtos e instalações reais da Borges?",
+    a: "As imagens são ilustrativas e não constituem catálogo técnico ou registro das instalações. Confirme os modelos e especificações de interesse com a equipe.",
+  },
+  {
+    q: "Como solicitar um orçamento de atacado?",
+    a: "Use os botões de WhatsApp desta página para falar com o comercial pelo (21) 98901-7366. Envie seu perfil de compra, produtos, quantidades e cidade de destino.",
+  },
 ] as const;
