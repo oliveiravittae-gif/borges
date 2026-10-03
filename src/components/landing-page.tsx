@@ -21,6 +21,7 @@ import {
   copy,
   audiences,
   planning,
+  creationCredit,
 } from "@/data/site";
 import { openWhatsApp, trackEvent } from "@/lib/whatsapp";
 
@@ -158,7 +159,8 @@ export function LandingPage() {
             <div className="max-w-3xl text-surface-light">
               <p className="eyebrow text-accent">{copy.eyebrow}</p>
               <h1 className="mt-6 text-balance text-4xl font-extrabold leading-[1.06] sm:text-5xl lg:text-7xl">
-                {copy.headline}
+                {copy.heroLead}
+                <span className="hero-emphasis">{copy.heroEmphasis}</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-hero-muted sm:text-lg">
                 {copy.intro}
@@ -183,6 +185,14 @@ export function LandingPage() {
                   Explorar a linha <ArrowRight size={18} />
                 </Button>
               </div>
+              <div className="hero-profiles" aria-label="Perfis de compra">
+                {copy.heroProfiles.map((label) => (
+                  <a key={label} href="#atacado">
+                    {label}
+                    <ArrowRight size={14} />
+                  </a>
+                ))}
+              </div>
             </div>
             <span className="hero-caption">Imagem ilustrativa</span>
           </div>
@@ -206,11 +216,16 @@ export function LandingPage() {
         <section id="atacado" className="section-space audience-section scroll-mt-20">
           <div className="site-container">
             <p className="eyebrow text-primary">Para quem compra para ir além</p>
+            <h2 className="section-title audience-title">{copy.audienceTitle}</h2>
             <div className="audience-grid">
-              {audiences.map((item) => (
+              {audiences.map((item, index) => (
                 <article key={item.id} className="audience-card">
+                  <span className="audience-index" aria-hidden="true">
+                    0{index + 1}
+                    <ArrowRight size={22} />
+                  </span>
                   <p className="eyebrow">{item.label}</p>
-                  <h2>{item.title}</h2>
+                  <h3>{item.title}</h3>
                   <p>{item.description}</p>
                   <Button
                     variant="ghost"
@@ -491,7 +506,10 @@ export function LandingPage() {
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Borges Esquadrias Metálicas.</span>
-            <span>Tradição em metal desde 1978.</span>
+            <span className="footer-tradition">Tradição em metal desde 1978.</span>
+            <a className="creation-credit" href={`mailto:${creationCredit.email}`}>
+              {creationCredit.label}
+            </a>
           </div>
         </div>
       </footer>

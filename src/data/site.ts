@@ -43,6 +43,10 @@ export const navigation = [
 ] as const;
 
 export const copy = {
+  audienceTitle: "Seu negócio tem um próximo passo. Vamos conversar sobre ele.",
+  heroProfiles: ["Para sua loja", "Para sua obra", "Para compras em volume"],
+  heroLead: "Esquadrias no atacado.",
+  heroEmphasis: "O próximo passo do seu negócio.",
   eyebrow: "Fabricante desde 1978 · Vendas no atacado",
   headline: "Metal que faz parte do seu próximo negócio.",
   intro:
@@ -61,6 +65,11 @@ export const copy = {
   finalTitle: "Sua próxima compra começa com uma boa conversa.",
   finalIntro:
     "Traga sua lista de produtos, quantidades e destino do pedido. Se já houver uma previsão para reposição ou outras etapas, inclua também: vale olhar para o conjunto.",
+} as const;
+
+export const creationCredit = {
+  label: "SEO de Criação",
+  email: "oliveiravittae.agentes.ia@gmail.com",
 } as const;
 
 export const audiences = [

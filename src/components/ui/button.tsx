@@ -22,7 +22,8 @@ export const buttonVariants = cva(
   },
 );
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>;
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants>;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   { className, variant, size, ...props },
@@ -31,10 +32,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   return (
     <button
       ref={ref}
-      className={cn(
-        buttonVariants({ variant, size }),
-        className,
-      )}
+      data-variant={variant ?? "primary"}
+      className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
   );
