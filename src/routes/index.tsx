@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Esquadrias metálicas no atacado para lojistas, revendedores, construtoras e compradores em volume. Borges, fabricante desde 1978 em Belford Roxo, RJ.",
+          "Linhas de ferro, alumínio e madeira no atacado para lojistas e construtoras. Borges desde 1978. Atendimento exclusivo ao Estado do Rio de Janeiro.",
       },
       { property: "og:title", content: "Borges Esquadrias Metálicas — Desde 1978" },
       {
@@ -31,6 +31,7 @@ export const Route = createFileRoute("/")({
             {
               "@type": ["Organization", "LocalBusiness"],
               name: company.fullName,
+              areaServed: { "@type": "State", name: "Rio de Janeiro" },
               foundingDate: String(company.foundedYear),
               telephone: company.commercialPhone,
               email: company.email,

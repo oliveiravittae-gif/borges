@@ -10,8 +10,14 @@ preservação dos parâmetros de campanha. O site não envia mensagens automatic
 
 Reposição, composição do pedido e próximas etapas são convites para consulta,
 sem promessa de descontos, estoque, capacidade, prazo ou cobertura de entrega.
-As fotografias são ilustrativas; modelos e especificações exigem confirmação
-com o comercial. Não há integração com Supabase.
+O atendimento é exclusivo ao Estado do Rio de Janeiro. Representantes, transporte
+próprio, controle e selo de qualidade foram validados pelo proprietário em 03/10/2026.
+O catálogo reúne 100 entradas das linhas de ferro, alumínio e madeira, com imagens
+e fichas copiadas do site original para servir localmente no Pages. Os diretórios
+de parceiros por município apontam para as planilhas públicas utilizadas no site
+original. As imagens de arquitetura do hero e da história continuam ilustrativas.
+Medidas, disponibilidade e condições do pedido são confirmadas com o comercial.
+Não há integração com Supabase.
 
 Validação da reformulação: builds Lovable e Pages, TypeScript, lint dos arquivos
 alterados, âncoras do HTML e mensagens comerciais com simulação local de abertura

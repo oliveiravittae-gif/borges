@@ -3,7 +3,7 @@ import { company } from "@/data/site";
 type WhatsAppContext = {
   source: string;
   audience?: string;
-  intent?: "recurring";
+  intent?: "recurring" | "representative" | "retailer";
   category?: string;
   product?: string;
 };
@@ -11,6 +11,8 @@ type WhatsAppContext = {
 const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
 export function buildWhatsAppMessage({ category, product, audience, intent }: WhatsAppContext) {
+  if (intent === "retailer")
+    return "Olá! Vim pelo site da Borges e gostaria de encontrar uma loja parceira no meu município, no Estado do Rio de Janeiro.";
   const profile =
     audience === "lojista"
       ? "Sou lojista/revendedor e gostaria de consultar condições para revenda."
@@ -25,7 +27,10 @@ export function buildWhatsAppMessage({ category, product, audience, intent }: Wh
     intent === "recurring"
       ? "Gostaria também de conversar sobre reposição e fornecimento recorrente."
       : "",
-    "Posso enviar os produtos, medidas, quantidades e cidade de destino para consulta?",
+    intent === "representative"
+      ? "Gostaria de solicitar a visita de um representante à minha loja no RJ."
+      : "",
+    "Posso enviar os produtos, medidas, quantidades e município de destino no RJ para consulta?",
   ]
     .filter(Boolean)
     .join("\n");

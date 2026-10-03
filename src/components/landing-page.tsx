@@ -22,7 +22,10 @@ import {
   audiences,
   planning,
   creationCredit,
+  strengths,
 } from "@/data/site";
+import { ProductCatalog } from "@/components/product-catalog";
+import { partners } from "@/data/partners";
 import { openWhatsApp, trackEvent } from "@/lib/whatsapp";
 
 function Logo({ light = false }: { light?: boolean }) {
@@ -179,10 +182,10 @@ export function LandingPage() {
                   variant="light"
                   className="sm:min-w-48"
                   onClick={() =>
-                    document.querySelector("#produtos")?.scrollIntoView({ behavior: "smooth" })
+                    document.querySelector("#catalogo")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  Explorar a linha <ArrowRight size={18} />
+                  Explorar o catálogo <ArrowRight size={18} />
                 </Button>
               </div>
               <div className="hero-profiles" aria-label="Perfis de compra">
@@ -203,7 +206,7 @@ export function LandingPage() {
             {[
               ["1978", "Início da trajetória"],
               ["Atacado", "Revenda e construção"],
-              ["RJ", "Belford Roxo"],
+              ["RJ", "Atendimento exclusivo no estado"],
             ].map(([lead, label]) => (
               <div key={label} className="trust-item">
                 <strong>{lead}</strong>
@@ -259,7 +262,7 @@ export function LandingPage() {
                   <div className="product-image">
                     <img
                       src={category.image}
-                      alt={`Referência visual da categoria ${category.name}`}
+                      alt={`Produto do catálogo Borges — ${category.name}`}
                       loading="lazy"
                     />
                   </div>
@@ -284,6 +287,36 @@ export function LandingPage() {
           </div>
         </section>
 
+        <ProductCatalog />
+        <section id="diferenciais" className="section-space bg-graphite text-surface-light">
+          <div className="site-container">
+            <p className="eyebrow text-accent">Estrutura para atender seu negócio</p>
+            <h2 className="section-title mt-4">Tradição no produto. Proximidade no atendimento.</h2>
+            <div className="strengths-grid">
+              {strengths.map((item, index) => (
+                <article key={item.title}>
+                  <span>0{index + 1}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+            <Button
+              variant="light"
+              className="mt-8"
+              onClick={() =>
+                openWhatsApp({
+                  source: "representative",
+                  audience: "lojista",
+                  intent: "representative",
+                })
+              }
+            >
+              Solicitar visita de representante
+              <ArrowRight size={18} />
+            </Button>
+          </div>
+        </section>
         <section className="recurring-section">
           <div className="site-container recurring-layout">
             <div className="recurring-mark" aria-hidden="true">
@@ -335,6 +368,7 @@ export function LandingPage() {
               <p className="eyebrow text-primary">Nossa história</p>
               <h2 className="section-title mt-4">Uma trajetória construída desde 1978.</h2>
               <p className="body-copy mt-6">{copy.history}</p>
+              <blockquote className="mission">{company.mission}</blockquote>
               <div className="timeline mt-10">
                 <div>
                   <strong>1978</strong>
@@ -360,6 +394,28 @@ export function LandingPage() {
           </div>
         </section>
 
+        <section id="revendedores" className="section-space bg-muted scroll-mt-20">
+          <div className="site-container">
+            <p className="eyebrow text-primary">Onde comprar no RJ</p>
+            <h2 className="section-title mt-4">{copy.retailerTitle}</h2>
+            <p className="body-copy mt-6">{copy.retailerIntro}</p>
+            <div className="retailer-grid">
+              {partners.map((partner) => (
+                <a key={partner.city} href={partner.url} target="_blank" rel="noreferrer">
+                  {partner.city}
+                  <ArrowRight size={17} />
+                </a>
+              ))}
+            </div>
+            <Button
+              className="mt-8"
+              onClick={() => openWhatsApp({ source: "retailer", intent: "retailer" })}
+            >
+              Consultar loja parceira
+              <ArrowRight size={18} />
+            </Button>
+          </div>
+        </section>
         <section id="duvidas" className="section-space bg-background scroll-mt-20">
           <div className="site-container grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
             <div>
@@ -395,8 +451,7 @@ export function LandingPage() {
                 <h2 className="section-title mt-4">Vamos conversar sobre sua próxima compra.</h2>
               </div>
               <p className="body-copy text-dark-muted">
-                Comercial Borges: informe seu perfil de compra, produtos, quantidades e destino do
-                pedido.
+                {company.coverage}. Informe seu perfil de compra, produtos, quantidades e município.
               </p>
             </div>
             <div className="contact-layout mt-12">
@@ -474,8 +529,8 @@ export function LandingPage() {
             <div>
               <Logo light />
               <p className="mt-6 max-w-xs text-sm leading-relaxed text-dark-muted">
-                Esquadrias metálicas desde 1978. Atacado para revenda, construção e compras em
-                volume.
+                Desde 1978. Linhas de ferro, alumínio e madeira para revenda e construção.
+                Atendimento exclusivo ao Estado do Rio de Janeiro.
               </p>
             </div>
             <div>
@@ -483,12 +538,13 @@ export function LandingPage() {
               <a href="#produtos">Portas</a>
               <a href="#produtos">Janelas</a>
               <a href="#produtos">Portões</a>
-              <a href="#produtos">Outras esquadrias</a>
+              <a href="#catalogo">Catálogo completo</a>
             </div>
             <div>
               <h3>Navegação</h3>
               <a href="#historia">A Borges</a>
               <a href="#atacado">Atacado</a>
+              <a href="#revendedores">Onde comprar</a>
               <a href="#duvidas">Dúvidas</a>
               <a href="#contato">Contato</a>
             </div>
